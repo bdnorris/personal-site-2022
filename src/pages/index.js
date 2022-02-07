@@ -9,11 +9,10 @@ query allPosts {
       node {
         id
         slug {
-          _key
-          _type
           current
         }
-        title
+        title,
+        publishedAt,
       }
     }
   }
@@ -22,24 +21,29 @@ query allPosts {
 
 // markup
 const IndexPage = props => {
-  const { data, errors } = props;
-  const project = data && data.posts;
+  // const { data, errors } = props;
+  const { data } = props;
+  // const project = data && data.posts;
+  // console.error(errors);
+  // console.log(project);
   return (
     <main>
       <title>Home Page</title>
       <h1>
-        Congratulations
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
+        Brian Norris
       </h1>
-      {JSON.stringify(data)}
+      <h2>
+        Web Developer
+      </h2>
+      <ul>
       {data.allSanityPost.edges.map(({ node }) => (
-        <div key={node.id}>
-          {node.title}
-          {/* {node.slug} */}
-        </div>
+        <li key={node.id}>
+          <h1>{node.title}</h1>
+          <p>{node.publishedAt}</p>
+          <p>{node.slug.current}</p>
+        </li>
       ))}
+      </ul>
     </main>
   );
 };
