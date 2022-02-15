@@ -1,5 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
+import '../sass/index.scss';
 
 // data
 export const query = graphql`

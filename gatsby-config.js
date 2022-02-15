@@ -1,15 +1,30 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
       title: `Personal Site 2022`,
     siteUrl: `https://www.yourdomain.tld`
   },
-  plugins: [{
-    resolve: 'gatsby-source-sanity',
-    options: {
-      "projectId": "xogj2e9f",
-      "dataset": "projects"
-    }
-  }, "gatsby-plugin-sass", {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {},
+    },
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        "projectId": "xogj2e9f",
+        "dataset": "projects"
+      }
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        typekit: {
+          id: process.env.TYPEKIT_ID,
+        },
+      },
+    }, "gatsby-plugin-sass", {
     resolve: 'gatsby-plugin-google-analytics',
     options: {
       "trackingId": "UA-29705114-1"
