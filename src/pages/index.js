@@ -1,19 +1,32 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import '../sass/index.scss';
+import Layout from "../templates/main";
+import CategoryListing from "../components/CategoryListing";
 
 // data
 export const query = graphql`
-query allPosts {
+query posts {
   allSanityPost {
     edges {
       node {
-        id
+        title
         slug {
           current
         }
-        title,
-        publishedAt,
+        _updatedAt
+        categories {
+          title
+          _id
+        }
+      }
+    }
+  }
+  allSanityCategory {
+    edges {
+      node {
+        title
+        _id
       }
     }
   }
@@ -21,14 +34,14 @@ query allPosts {
 `;
 
 // markup
-const IndexPage = props => {
+const IndexPage = ({data}) => {
   // const { data, errors } = props;
-  const { data } = props;
+  // const { data } = props;
   // const project = data && data.posts;
   // console.error(errors);
-  // console.log(project);
+  console.log(data);
   return (
-    <main>
+    <Layout>
       <title>Home Page</title>
       <h1>
         Brian Norris
@@ -37,15 +50,19 @@ const IndexPage = props => {
         Web Developer
       </h2>
       <ul>
-      {data.allSanityPost.edges.map(({ node }) => (
-        <li key={node.id}>
-          <h1>{node.title}</h1>
-          <p>{node.publishedAt}</p>
-          <p>{node.slug.current}</p>
-        </li>
-      ))}
+        {data.allSanityCategory.edges.map(({ node }) => (
+          <li key={node.id}>
+            <h3>{node.title}</h3>
+            {node._id}
+            {data.allSanityPost.edges.map(({ node }) => (
+              (node.categories.map(({ _id }) => _id === node._id)) ? (
+                <CategoryListing></CategoryListing>
+              ) : ''
+            ))}
+          </li>
+        ))}
       </ul>
-    </main>
+    </Layout>
   );
 };
 
