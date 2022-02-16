@@ -17,7 +17,7 @@ query posts {
         _updatedAt
         categories {
           title
-          _id
+          id
         }
       }
     }
@@ -26,7 +26,7 @@ query posts {
     edges {
       node {
         title
-        _id
+        id
       }
     }
   }
@@ -40,6 +40,8 @@ const IndexPage = ({data}) => {
   // const project = data && data.posts;
   // console.error(errors);
   console.log(data);
+  const categories = data.allSanityCategory.edges;
+  const posts = data.allSanityPost.edges;
   return (
     <Layout>
       <title>Home Page</title>
@@ -50,15 +52,10 @@ const IndexPage = ({data}) => {
         Web Developer
       </h2>
       <ul>
-        {data.allSanityCategory.edges.map(({ node }) => (
+        {categories.map(({ node }) => (
           <li key={node.id}>
             <h3>{node.title}</h3>
-            {node._id}
-            {data.allSanityPost.edges.map(({ node }) => (
-              (node.categories.map(({ _id }) => _id === node._id)) ? (
-                <CategoryListing></CategoryListing>
-              ) : ''
-            ))}
+            <CategoryListing category={node.id} posts={posts} />
           </li>
         ))}
       </ul>

@@ -3,13 +3,18 @@ import * as React from "react"
 // markup
 const CategoryListing = props => {
   // const { data, errors } = props;
-  const { data } = props;
   // const project = data && data.posts;
   // console.error(errors);
   // console.log(project);
+	const postsInCat = props.posts.filter(post => post.node.categories.map(cat => cat.id).includes(props.category));
   return (
 		<ul>
-			nothing
+			{postsInCat.map(({ node }) => (
+				<li key={node.id}>
+					<h3>{node.title}</h3>
+					{node.id}
+				</li>
+			))}
 		</ul>
   );
 };
