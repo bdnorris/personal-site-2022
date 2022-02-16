@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 // markup
 const CategoryListing = props => {
@@ -11,8 +12,7 @@ const CategoryListing = props => {
 		<ul>
 			{postsInCat.map(({ node }) => (
 				<li key={node.id}>
-					<h3>{node.title}</h3>
-					{node.id}
+					<Link to={`/projects/${node.slug.current}`}>{node.title}</Link>
 				</li>
 			))}
 		</ul>
