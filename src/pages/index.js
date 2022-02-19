@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import '../sass/index.scss';
 import Layout from "../templates/main";
 import CategoryListing from "../components/CategoryListing";
+import Shape from "../components/Shape";
+// import { Helmet } from "react-helmet";
 
 // data
 export const query = graphql`
@@ -46,7 +48,7 @@ const IndexPage = ({data}) => {
     <Layout>
       <title>Home Page</title>
       <h1>
-        Brian Norris
+        Brian N<Shape></Shape>rris
       </h1>
       <h2>
         Web Developer

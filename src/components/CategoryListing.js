@@ -11,7 +11,7 @@ const CategoryListing = props => {
   return (
 		<ul>
 			{postsInCat.map(({ node }) => (
-				<li key={node.id}>
+				<li key={node.slug}>
 					<Link to={`/projects/${node.slug.current}`}>{node.title}</Link>
 				</li>
 			))}
