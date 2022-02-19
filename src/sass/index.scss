@@ -1,10 +1,16 @@
 $font-stack: prestige-elite-std, monospace; 
 $headline: quasimoda, sans-serif; 
-$primary-color: #333;
+$black: #1F201D;
+$gold: #E1B269;
+$red: #F38666;
+$blue: #AEBBAE;
+$gray: #C2BBAD;
+$primary-color: $gray;
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
+	background-color: $black;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,4 +21,12 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
 	text-transform: uppercase;
 	font-size: 5em;
+	color: $gold;
+	// letter-spacing: 0.05em;
+}
+
+h2 {
+	color: $red;
+	font-size: 2.5em;
+	font-weight: 500;
 }

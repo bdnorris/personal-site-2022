@@ -47,10 +47,10 @@ const IndexPage = ({data}) => {
   return (
     <Layout>
       <title>Home Page</title>
-      <h1>
+      <h1 style={{margin: '1em 0 0 0'}}>
         Brian N<Shape></Shape>rris
       </h1>
-      <h2>
+      <h2 style={{margin: '0'}}>
         Web Developer
       </h2>
       <ul>
