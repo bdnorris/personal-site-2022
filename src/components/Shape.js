@@ -19,9 +19,9 @@ class Shape extends Component {
 		// add circle
 		new Zdog.Ellipse({ // eslint-disable-line no-undef
 			addTo: illo,
-			diameter: 60,
-			stroke: 14,
-			color: '#636',
+			diameter: 50,
+			stroke: 12,
+			color: '#F38666',
 		});
 
 		// update & render
@@ -29,9 +29,9 @@ class Shape extends Component {
 
 		function animate() {
 			// rotate illo each frame
-			illo.rotate.y += 0.03;
+			// illo.rotate.y += 0.03;	
 			if ( isSpinning ) {
-				illo.rotate.y += 0.03;
+				illo.rotate.y += 0.015;
 			}
 			illo.updateRenderGraph();
 			// animate next frame
@@ -43,7 +43,7 @@ class Shape extends Component {
 	render() {
 		return (
 			<div style={{display: 'inline'}} >
-				<canvas style={{display: 'inline'}} className="zdog-canvas" width="80" height="80" ></canvas>
+				<canvas style={{display: 'inline', position: 'relative', top: '0.05em'}} className="zdog-canvas" width="72" height="64" ></canvas>
 			</div>
 		)
 	}
