@@ -32,6 +32,7 @@ class Shape extends Component {
 			// illo.rotate.y += 0.03;	
 			if ( isSpinning ) {
 				illo.rotate.y += 0.015;
+				illo.rotate.x += 0.01;
 			}
 			illo.updateRenderGraph();
 			// animate next frame
