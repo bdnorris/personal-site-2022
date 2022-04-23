@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from 'gatsby'
 import Layout from "./main.js";
 import BlockContent from '@sanity/block-content-to-react'
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 
 const BlockRenderer = (props) => {
@@ -33,16 +34,41 @@ query MyQuery($slug: String!) {
 				_type
 			}
 		}
+		mainImage {
+			asset {
+				gatsbyImageData(
+					aspectRatio: 1.5
+					backgroundColor: ""
+					breakpoints: 3
+					fit: CLIP
+					formats: NO_CHANGE
+					layout: FIXED
+					outputPixelDensities: 1.5
+					placeholder: DOMINANT_COLOR
+					sizes: "(max-width: 768px) 480px, 800px"
+					height: 360
+					width: 480
+				)
+				description
+				path
+			}
+		}
 	}
 }
 `;
 
 const ProjectPage = (data) => {
 	console.log(data);
+	const image = getImage(data.data.sanityPost.mainImage.asset)
 	return (
 		<Layout>
 			<h1>{data.data.sanityPost.title}</h1>
 			<article>
+				{
+					(data.data.sanityPost.mainImage) ?
+						<GatsbyImage image={image} alt={image.alt} />
+						: null
+				}
 				{
 					(data.data.sanityPost._rawBody) ?
 						<BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
