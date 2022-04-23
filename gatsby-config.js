@@ -2,7 +2,7 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-      title: `Personal Site 2022`,
+    title: `Personal Site 2022`,
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [
@@ -24,29 +24,39 @@ module.exports = {
           id: process.env.TYPEKIT_ID,
         },
       },
-    }, "gatsby-plugin-sass", {
-    resolve: 'gatsby-plugin-google-analytics',
-    options: {
-      "trackingId": "UA-29705114-1"
-    }
-  }, "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  }, "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
     },
-    __key: "images"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        "trackingId": "UA-29705114-1"
+      },
     },
-    __key: "pages"
-  }]
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        "icon": "src/images/icon.png"
+      }
+    },
+    "gatsby-plugin-mdx",
+    "gatsby-transformer-sharp",
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "images",
+        "path": "./src/images/"
+      },
+      __key: "images"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": "./src/pages/"
+      },
+      __key: "pages"
+    }]
 };
