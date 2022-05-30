@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Layout from "./main.js";
 import BlockContent from '@sanity/block-content-to-react'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import CategoryListing from "../components/CategoryListing.js";
 
 
 const BlockRenderer = (props) => {
@@ -20,6 +21,8 @@ const BlockRenderer = (props) => {
 	// Fall back to default handling
 	return BlockContent.defaultSerializers.types.block(props)
 }
+
+
 
 export const query = graphql`
 query sanityPost($slug: String!) {
@@ -81,6 +84,29 @@ query sanityPost($slug: String!) {
       mediaType
     }
   }
+	allSanityPost {
+    edges {
+      node {
+        title
+        slug {
+          current
+        }
+        _updatedAt
+        categories {
+          title
+          id
+        }
+      }
+    }
+  }
+  allSanityCategory {
+    edges {
+      node {
+        title
+        id
+      }
+    }
+  }
 }
 `;
 
@@ -91,32 +117,46 @@ const ProjectPage = (data) => {
 	console.log('image', image);
 	const galleryImages = data.data.sanityPost.gallery ? data.data.sanityPost.gallery.map(image => getImage(image.asset)) : null;
 	console.log('galleryImages', galleryImages);
+	const categories = data.data.allSanityCategory.edges;
+	const posts = data.data.allSanityPost.edges;
 	return (
 		<Layout>
-			<h1>{data.data.sanityPost.title}</h1>
-			<article>
-				{
-					(image) ?
-						<GatsbyImage image={image} alt={imageAlt} />
-						: null
-				}
-				{
-					(galleryImages) ? 
-						<ul>
-							{galleryImages.map(image => (
-								<li key={image.id}>
-									<GatsbyImage image={image} alt="TODO" />
-								</li>
-							))}
-						</ul>
-						: null
-				}
-				{
-					(data.data.sanityPost._rawBody) ?
-						<BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
-						: null
-				}
-			</article>
+			<div className="columns">
+				<nav>
+					<ul>
+						{categories.map(({ node }) => (
+							<li key={node.id}>
+								<h3>{node.title}</h3>
+								<CategoryListing category={node.id} posts={posts} />
+							</li>
+						))}
+					</ul>
+				</nav>
+				<article>
+					<h1>{data.data.sanityPost.title}</h1>
+					{
+						(image) ?
+							<GatsbyImage image={image} alt={imageAlt} />
+							: null
+					}
+					{
+						(galleryImages) ?
+							<ul>
+								{galleryImages.map(image => (
+									<li key={image.id}>
+										<GatsbyImage image={image} alt="TODO" />
+									</li>
+								))}
+							</ul>
+							: null
+					}
+					{
+						(data.data.sanityPost._rawBody) ?
+							<BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
+							: null
+					}
+				</article>
+			</div>
 		</Layout>
 	)
 }
