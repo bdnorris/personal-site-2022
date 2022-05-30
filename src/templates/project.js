@@ -141,8 +141,7 @@ const ProjectPage = (data) => {
 						(galleryImages) ? (
 							<ul>
 								{galleryImages.map(image => 
-								{ image._id }
-									<li key={image._id}>
+									<li key={image.asset._id}>
 										<GatsbyImage image={getImage(image.asset)} alt="TODO" />
 									</li>
 								)}
