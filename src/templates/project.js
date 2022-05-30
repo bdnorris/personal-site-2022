@@ -33,6 +33,8 @@ query sanityPost($slug: String!) {
         _type
       }
     }
+		github
+		website
     mainImage {
       alt
       mainImageImage {
@@ -43,12 +45,12 @@ query sanityPost($slug: String!) {
             breakpoints: 10
             fit: CLIP
             formats: NO_CHANGE
-            height: 100
+            height: 600
             layout: FIXED
             outputPixelDensities: 1.5
             placeholder: DOMINANT_COLOR
             sizes: ""
-            width: 100
+            width: 1200
           )
         }
       }
@@ -151,6 +153,20 @@ const ProjectPage = (data) => {
 					{
 						(data.data.sanityPost._rawBody) ?
 							<BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
+							: null
+					}
+					{
+						(data.data.sanityPost.github) ?
+							<p>
+								<a href={data.data.sanityPost.github}>GitHub</a>
+							</p>
+							: null
+					}
+					{
+						(data.data.sanityPost.website) ?
+							<p>
+								<a href={data.data.sanityPost.website}>Website</a>
+							</p>
 							: null
 					}
 				</article>
