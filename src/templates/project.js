@@ -5,7 +5,6 @@ import BlockContent from '@sanity/block-content-to-react'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import CategoryListing from "../components/CategoryListing.js";
 
-
 const BlockRenderer = (props) => {
 	const { style = 'normal' } = props.node
 
@@ -21,8 +20,6 @@ const BlockRenderer = (props) => {
 	// Fall back to default handling
 	return BlockContent.defaultSerializers.types.block(props)
 }
-
-
 
 export const query = graphql`
 query sanityPost($slug: String!) {
@@ -59,6 +56,7 @@ query sanityPost($slug: String!) {
     gallery {
       _type
       asset {
+				_id
         gatsbyImageData(
           aspectRatio: 1
           backgroundColor: ""
@@ -115,7 +113,7 @@ const ProjectPage = (data) => {
 	const image = data.data.sanityPost.mainImage ? getImage(data.data.sanityPost.mainImage.mainImageImage.asset) : null;
 	const imageAlt = data.data.sanityPost.mainImage ? data.data.sanityPost.mainImage.alt : null;
 	console.log('image', image);
-	const galleryImages = data.data.sanityPost.gallery ? data.data.sanityPost.gallery.map(image => getImage(image.asset)) : null;
+	const galleryImages = data.data.sanityPost.gallery;
 	console.log('galleryImages', galleryImages);
 	const categories = data.data.allSanityCategory.edges;
 	const posts = data.data.allSanityPost.edges;
@@ -140,14 +138,15 @@ const ProjectPage = (data) => {
 							: null
 					}
 					{
-						(galleryImages) ?
+						(galleryImages) ? (
 							<ul>
-								{galleryImages.map(image => (
-									<li key={image.id}>
-										<GatsbyImage image={image} alt="TODO" />
+								{galleryImages.map(image => 
+								{ image._id }
+									<li key={image._id}>
+										<GatsbyImage image={getImage(image.asset)} alt="TODO" />
 									</li>
-								))}
-							</ul>
+								)}
+							</ul>)
 							: null
 					}
 					{

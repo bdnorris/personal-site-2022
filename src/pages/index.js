@@ -36,31 +36,29 @@ query posts {
 `;
 
 // markup
-const IndexPage = ({data}) => {
-  // const { data, errors } = props;
-  // const { data } = props;
-  // const project = data && data.posts;
-  // console.error(errors);
+const IndexPage = ({ data }) => {
   console.log(data);
   const categories = data.allSanityCategory.edges;
   const posts = data.allSanityPost.edges;
   return (
     <Layout>
       <title>Home Page</title>
-      <h1 style={{margin: '1em 0 0 0'}}>
+      <h1 style={{ margin: '1em 0 0 0' }}>
         Brian N<Shape></Shape>rris
       </h1>
-      <h2 style={{margin: '0'}}>
+      <h2 style={{ margin: '0' }}>
         Web Developer
       </h2>
-      <ul>
-        {categories.map(({ node }) => (
-          <li key={node.id}>
-            <h3>{node.title}</h3>
-            <CategoryListing category={node.id} posts={posts} />
-          </li>
-        ))}
-      </ul>
+      <nav>
+        <ul>
+          {categories.map(({ node }) => (
+            <li key={node.id}>
+              <h3>{node.title}</h3>
+              <CategoryListing category={node.id} posts={posts} />
+            </li>
+          ))}
+        </ul>
+      </nav>
     </Layout>
   );
 };

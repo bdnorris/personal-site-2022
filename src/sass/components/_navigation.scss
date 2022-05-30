@@ -6,6 +6,7 @@ nav {
     display: flex;
     & > li {
       margin-right: 1em;
+      color: $primary;
     }
   }
 }
