@@ -22,51 +22,93 @@ const BlockRenderer = (props) => {
 }
 
 export const query = graphql`
-query MyQuery($slug: String!) {
-	sanityPost(slug: {current: {eq: $slug}}) {
-		_createdAt(locale: "", fromNow: false, formatString: "", difference: "")
-		title
-		_rawBody
-		body {
-			children {
-				marks
-				text
-				_type
-			}
-		}
-		mainImage {
-			asset {
-				gatsbyImageData(
-					aspectRatio: 1.5
-					backgroundColor: ""
-					breakpoints: 3
-					fit: CLIP
-					formats: NO_CHANGE
-					layout: FIXED
-					outputPixelDensities: 1.5
-					placeholder: DOMINANT_COLOR
-					sizes: "(max-width: 768px) 480px, 800px"
-					height: 360
-					width: 480
-				)
-				description
-				path
-			}
-		}
-	}
+query sanityPost($slug: String!) {
+  sanityPost(slug: {current: {eq: $slug}}) {
+    title
+    _rawBody
+    body {
+      children {
+        marks
+        text
+        _type
+      }
+    }
+    mainImage {
+      alt
+      mainImageImage {
+        asset {
+          gatsbyImageData(
+            aspectRatio: 1.5
+            backgroundColor: ""
+            breakpoints: 10
+            fit: CLIP
+            formats: NO_CHANGE
+            height: 100
+            layout: FIXED
+            outputPixelDensities: 1.5
+            placeholder: DOMINANT_COLOR
+            sizes: ""
+            width: 100
+          )
+        }
+      }
+    }
+    gallery {
+      _type
+      asset {
+        gatsbyImageData(
+          aspectRatio: 1
+          backgroundColor: ""
+          breakpoints: 10
+          fit: CLIP
+          layout: FIXED
+          width: 109
+          sizes: ""
+          placeholder: DOMINANT_COLOR
+          outputPixelDensities: 1.5
+          height: 109
+          formats: NO_CHANGE
+        )
+      }
+    }
+    categories {
+      id
+    }
+    internal {
+      content
+      description
+      ignoreType
+      mediaType
+    }
+  }
 }
 `;
 
 const ProjectPage = (data) => {
 	console.log(data);
-	const image = getImage(data.data.sanityPost.mainImage.asset)
+	const image = data.data.sanityPost.mainImage ? getImage(data.data.sanityPost.mainImage.mainImageImage.asset) : null;
+	const imageAlt = data.data.sanityPost.mainImage.alt ? data.data.sanityPost.mainImage.alt : null;
+	console.log('image', image);
+	const galleryImages = data.data.sanityPost.gallery ? data.data.sanityPost.gallery.map(image => getImage(image.asset)) : null;
+	console.log('galleryImages', galleryImages);
 	return (
 		<Layout>
 			<h1>{data.data.sanityPost.title}</h1>
 			<article>
 				{
-					(data.data.sanityPost.mainImage) ?
-						<GatsbyImage image={image} alt={image.alt} />
+					(image) ?
+						<GatsbyImage image={image} alt={imageAlt} />
+						: null
+				}
+				{
+					(galleryImages) ? 
+						<ul>
+							{galleryImages.map(image => (
+								<li key={image.id}>
+									<GatsbyImage image={image} alt="TODO" />
+								</li>
+							))}
+						</ul>
 						: null
 				}
 				{
