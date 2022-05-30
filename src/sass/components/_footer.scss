@@ -1,0 +1,7 @@
+// * General footer or site footer styles
+
+footer {
+	// https://css-tricks.com/a-clever-sticky-footer-technique/
+	position: sticky;
+  top: 100vh;
+}

@@ -1,0 +1,20 @@
+$black: #1F201D;
+$gold: #E1B269;
+$red: #F38666;
+$blue: #AEBBAE;
+$gray: #C2BBAD;
+
+// $black: #0E1111;
+$dgray: #232828;
+// $gray: #444D4F;
+$lgray: #9EAFB2;
+$llgray: #DEE2E2;
+
+/* aliases */
+$text: $dgray;
+$text-light: $gray;
+$error: $red;
+$primary: $red;
+$secondary: $blue;
+$clickable: $gold;
+$clickable-hover: lighten($red, 20%);
