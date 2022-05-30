@@ -87,7 +87,7 @@ query sanityPost($slug: String!) {
 const ProjectPage = (data) => {
 	console.log(data);
 	const image = data.data.sanityPost.mainImage ? getImage(data.data.sanityPost.mainImage.mainImageImage.asset) : null;
-	const imageAlt = data.data.sanityPost.mainImage.alt ? data.data.sanityPost.mainImage.alt : null;
+	const imageAlt = data.data.sanityPost.mainImage ? data.data.sanityPost.mainImage.alt : null;
 	console.log('image', image);
 	const galleryImages = data.data.sanityPost.gallery ? data.data.sanityPost.gallery.map(image => getImage(image.asset)) : null;
 	console.log('galleryImages', galleryImages);
