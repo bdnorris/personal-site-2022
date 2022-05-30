@@ -119,7 +119,7 @@ const ProjectPage = (data) => {
 	const posts = data.data.allSanityPost.edges;
 	return (
 		<Layout>
-			<div className="columns">
+			<div className="main-wrapper">
 				<nav>
 					<ul>
 						{categories.map(({ node }) => (

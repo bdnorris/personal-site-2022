@@ -8,10 +8,9 @@
 }
 
 body {
-  font-family: $sans;
+  font-family: $font-stack;
   font-size: $browser-context * 1px; // ! the multiplication enforces pixels, even if you don't specify
-  color: $text;
-  background-color: $llgray;
+  background-color: $black;
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
@@ -19,6 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden; // keeps animations inside the viewport
+  color: $primary;
   &.locked {
     // add this class with javascript when you launch a modal or something, to prevent background scrolling
     overflow: hidden;

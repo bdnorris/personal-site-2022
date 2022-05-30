@@ -4,9 +4,16 @@ nav {
   & > ul {
     list-style: none;
     display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
     & > li {
       margin-right: 1em;
       color: $primary;
+      & > ul {
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 }

@@ -1,5 +1,9 @@
 // * Could be used for layout styles
 
-article {
-  @include default-sizing($xlarge);
+.main-wrapper {
+  @include max-width-variable($global-max-width);
+  @include breakpoint(large) {
+    display: flex;
+    gap: 2em;
+  }
 }
