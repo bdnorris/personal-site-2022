@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'colors';
+@import 'icons';
 @import 'vendor/index';
 @import 'mixins';
 @import 'functions';
@@ -8,18 +9,4 @@
 @import 'webfonts';
 @import 'typography';
 @import 'buttons';
-@import 'icons';
 @import 'components/index';
-
-
-
-body {
-  font: 100% $font-stack;
-  color: $primary;
-	background-color: $black;
-}
-
-
-.columns {
-	display: flex;
-}

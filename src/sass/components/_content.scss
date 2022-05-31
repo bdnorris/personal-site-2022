@@ -1,7 +1,7 @@
 // * Could be used for layout styles
 
 .main-wrapper {
-  @include max-width-variable($global-max-width);
+  @include max-width-variable($global-max-width, $desktop-margin);
   @include breakpoint(large) {
     display: flex;
     gap: 2em;
