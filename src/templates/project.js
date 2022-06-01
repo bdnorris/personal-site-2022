@@ -42,15 +42,13 @@ query sanityPost($slug: String!) {
           gatsbyImageData(
             aspectRatio: 1.5
             backgroundColor: ""
-            breakpoints: 10
+            breakpoints: 6
             fit: CLIP
             formats: NO_CHANGE
-            height: 600
-            layout: FIXED
-            outputPixelDensities: 1.5
+            outputPixelDensities: 2
             placeholder: DOMINANT_COLOR
             sizes: ""
-            width: 1200
+            width: 1400
           )
         }
       }
@@ -60,16 +58,13 @@ query sanityPost($slug: String!) {
       asset {
 				_id
         gatsbyImageData(
-          aspectRatio: 1
+          aspectRatio: 1.5
           backgroundColor: ""
-          breakpoints: 10
-          fit: CLIP
-          layout: FIXED
-          width: 109
+          breakpoints: 6
+          width: 800
           sizes: ""
           placeholder: DOMINANT_COLOR
-          outputPixelDensities: 1.5
-          height: 109
+          outputPixelDensities: 2
           formats: NO_CHANGE
         )
       }
@@ -134,25 +129,27 @@ const ProjectPage = (data) => {
 				</nav>
 				<article>
 					<h1>{data.data.sanityPost.title}</h1>
+          {
+            (data.data.sanityPost._rawBody) ?
+              <BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
+              : null
+          }
 					{
 						(image) ?
-							<GatsbyImage image={image} alt={imageAlt} />
+              <div className="post__main-image">
+                <GatsbyImage image={image} alt={imageAlt} />
+              </div>
 							: null
 					}
 					{
 						(galleryImages) ? (
-							<ul>
+							<ul className="post__image-gallery">
 								{galleryImages.map(image => 
 									<li key={image.asset._id}>
 										<GatsbyImage image={getImage(image.asset)} alt="TODO" />
 									</li>
 								)}
 							</ul>)
-							: null
-					}
-					{
-						(data.data.sanityPost._rawBody) ?
-							<BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
 							: null
 					}
 					{
