@@ -1,9 +1,12 @@
 // * Could be used for layout styles
 
 .main-wrapper {
-  @include max-width-variable($global-max-width, $desktop-margin);
+  @include max-width-variable($global-max-width, 3em);
+  display: flex;
+  flex-direction: column-reverse;
   @include breakpoint(large) {
-    display: flex;
+    display: grid;
     gap: 2em;
+    grid-template-columns: 1fr 4fr;
   }
 }
