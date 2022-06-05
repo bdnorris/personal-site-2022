@@ -5,6 +5,7 @@ import Layout from "../templates/main";
 import CategoryListing from "../components/CategoryListing";
 import Shape from "../components/Shape";
 // import { Helmet } from "react-helmet";
+import NetworkIcons from "../components/NetworkIcons.js";
 
 // data
 export const query = graphql`
@@ -87,7 +88,7 @@ const IndexPage = ({ data }) => {
 						{socialLinks.map(({ name, url, icon }) => (
 							<li key={name}>
 								<a href={url} target="_blank" rel="noreferrer">
-									<i className={`fab fa-${icon}`}></i>
+									<NetworkIcons icon={icon} />
 								</a>
 							</li>
 						))}
