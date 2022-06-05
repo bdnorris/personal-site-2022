@@ -40,7 +40,6 @@ query sanityPost($slug: String!) {
       mainImageImage {
         asset {
           gatsbyImageData(
-            aspectRatio: 1.5
             backgroundColor: ""
             breakpoints: 6
             fit: CLIP
@@ -48,7 +47,7 @@ query sanityPost($slug: String!) {
             outputPixelDensities: 2
             placeholder: DOMINANT_COLOR
             sizes: ""
-            width: 1400
+            width: 1844
           )
         }
       }
@@ -58,14 +57,16 @@ query sanityPost($slug: String!) {
       asset {
 				_id
         gatsbyImageData(
-          aspectRatio: 1.5
           backgroundColor: ""
           breakpoints: 6
-          width: 800
+          width: 900
           sizes: ""
           placeholder: DOMINANT_COLOR
-          outputPixelDensities: 2
-          formats: NO_CHANGE
+          fit: CROP
+          aspectRatio: 1
+          outputPixelDensities: 1.5
+          layout: FULL_WIDTH
+          formats: AUTO
         )
       }
     }
@@ -131,7 +132,9 @@ const ProjectPage = (data) => {
 					<h1>{data.data.sanityPost.title}</h1>
           {
             (data.data.sanityPost._rawBody) ?
-              <BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
+              <div className="content">
+                <BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
+              </div>
               : null
           }
 					{
