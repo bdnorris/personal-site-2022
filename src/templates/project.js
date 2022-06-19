@@ -4,6 +4,7 @@ import Layout from "./main.js";
 import BlockContent from '@sanity/block-content-to-react'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import CategoryListing from "../components/CategoryListing.js";
+import Shape from "../components/Shape";
 
 const BlockRenderer = (props) => {
 	const { style = 'normal' } = props.node
@@ -107,6 +108,9 @@ const ProjectPage = (data) => {
 		<Layout>
 			<div className="main-wrapper">
 				<nav>
+        <a href="/" style={{ margin: '0.5em 0 0 0' }}>
+					<Shape color="AEBBAE"></Shape>
+				</a>
 					<ul>
 						{categories.map(({ node }) => (
 							<li key={node.id}>

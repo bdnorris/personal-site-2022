@@ -21,7 +21,7 @@ class Shape extends Component {
 			addTo: illo,
 			diameter: 50,
 			stroke: 12,
-			color: '#083f3e',
+			color: `#${this.props.color ? this.props.color : '083f3e'}`,
 		});
 
 		// update & render
