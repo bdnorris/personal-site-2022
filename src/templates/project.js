@@ -120,7 +120,9 @@ const ProjectPage = (data) => {
 					<h1>{data.data.sanityPost.title}</h1>
           {
             (data.data.sanityPost._rawBody) ?
-              <BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
+              <div className="content">
+                <BlockContent blocks={data.data.sanityPost._rawBody} serializers={{ types: { block: BlockRenderer } }} />
+              </div>
               : null
           }
 					{

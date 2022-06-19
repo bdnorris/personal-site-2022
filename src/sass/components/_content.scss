@@ -10,3 +10,14 @@
     grid-template-columns: 1fr 4fr;
   }
 }
+
+.main-wrapper--full {
+  display: block;
+  @include breakpoint(large) {
+    display: block;
+  }
+}
+
+.content {
+  margin-bottom: 2em;
+}

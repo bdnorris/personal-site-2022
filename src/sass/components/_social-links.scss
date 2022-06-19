@@ -1,0 +1,22 @@
+.social-links {
+	ul {
+		list-style: none;
+		display: flex;
+		margin: 0 0 1em 0;
+		padding: 2.25em 0 0 0;
+		& > li {
+			margin: 0 1em 1em 0;
+			color: $primary;
+			a {
+				&::after {
+					display: none;
+				}
+				&:hover {
+					svg path {
+						fill: $primary;
+					}
+				}
+			}
+		}
+	}
+}

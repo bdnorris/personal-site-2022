@@ -35,11 +35,11 @@ module.exports = {
     },
     "gatsby-plugin-image",
     {
-      resolve: "gatsby-plugin-sharp",
+      resolve: `gatsby-plugin-sharp`,
       options: {
-        transformOptions: {
-          resize: "cover",
-          cropFocus: "north"
+        defaults: {
+          quality: 80,
+          cropFocus: "NORTH"
         }
       }
     },

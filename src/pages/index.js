@@ -5,6 +5,7 @@ import Layout from "../templates/main";
 import CategoryListing from "../components/CategoryListing";
 import Shape from "../components/Shape";
 // import { Helmet } from "react-helmet";
+import NetworkIcons from "../components/NetworkIcons.js";
 
 // data
 export const query = graphql`
@@ -40,9 +41,31 @@ const IndexPage = ({ data }) => {
 	console.log(data);
 	const categories = data.allSanityCategory.edges;
 	const posts = data.allSanityPost.edges;
+	const socialLinks = [
+		{
+			name: 'Dribbble',
+			url: 'https://dribbble.com/bdnorris',
+			icon: 'dribbble',
+		},
+		{
+			name: 'Github',
+			url: 'https://github.com/bdnorris',
+			icon: 'github',
+		},
+		{
+			name: 'Linkedin',
+			url: 'https://www.linkedin.com/in/brian-norris-b401ab37/',
+			icon: 'linkedin',
+		},
+		{
+			name: 'CodePen',
+			url: 'https://codepen.io/bdnorris',
+			icon: 'codepen',
+		},
+	]
 	return (
 		<Layout>
-			<div className="main-wrapper">
+			<div className="main-wrapper main-wrapper--full">
 				<div>
 				<h1 style={{ margin: '1em 0 0 0' }}>
 					Brian N<Shape></Shape>rris
@@ -60,6 +83,17 @@ const IndexPage = ({ data }) => {
 						))}
 					</ul>
 				</nav>
+				<div className="social-links">
+					<ul>
+						{socialLinks.map(({ name, url, icon }) => (
+							<li key={name}>
+								<a href={url} target="_blank" rel="noreferrer">
+									<NetworkIcons icon={icon} />
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
 				</div>
 			</div>
 		</Layout>
