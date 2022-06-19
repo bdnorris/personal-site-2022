@@ -40,15 +40,9 @@ query sanityPost($slug: String!) {
       mainImageImage {
         asset {
           gatsbyImageData(
-            aspectRatio: 1.5
-            backgroundColor: ""
-            breakpoints: 6
-            fit: CLIP
-            formats: NO_CHANGE
             outputPixelDensities: 2
             placeholder: DOMINANT_COLOR
-            sizes: ""
-            width: 1400
+            width: 1440
           )
         }
       }
@@ -58,14 +52,9 @@ query sanityPost($slug: String!) {
       asset {
 				_id
         gatsbyImageData(
-          aspectRatio: 1.5
-          backgroundColor: ""
-          breakpoints: 6
-          width: 800
-          sizes: ""
-          placeholder: DOMINANT_COLOR
           outputPixelDensities: 2
-          formats: NO_CHANGE
+          placeholder: DOMINANT_COLOR
+          width: 920
         )
       }
     }

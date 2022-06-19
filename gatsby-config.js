@@ -1,3 +1,5 @@
+const { convertInputObjectField } = require("graphql-compose");
+
 require("dotenv").config()
 
 module.exports = {
@@ -32,7 +34,15 @@ module.exports = {
       },
     },
     "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-plugin-sharp",
+      options: {
+        transformOptions: {
+          resize: "cover",
+          cropFocus: "north"
+        }
+      }
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
