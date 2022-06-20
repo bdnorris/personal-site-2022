@@ -89,6 +89,7 @@ query sanityPost($slug: String!) {
       node {
         title
         id
+        order
       }
     }
   }
@@ -102,7 +103,8 @@ const ProjectPage = (data) => {
 	console.log('image', image);
 	const galleryImages = data.data.sanityPost.gallery;
 	console.log('galleryImages', galleryImages);
-	const categories = data.data.allSanityCategory.edges;
+	let categories = data.data.allSanityCategory.edges;
+  categories.sort((a, b) => a.node.order - b.node.order);
 	const posts = data.data.allSanityPost.edges;
 	return (
 		<Layout>
