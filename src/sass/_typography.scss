@@ -49,9 +49,12 @@ h4,
 a {
   color: $clickable;
   // text-decoration: none;
-  text-underline-offset: 0.3em;
+  text-underline-offset: 0.25em;
+  transition: text-underline-offset 200ms ease;
   &:hover {
     color: $clickable-hover;
+    text-underline-offset: 0.15em;
+    // text-decoration-thickness: 1.4px;
     // text-decoration: underline;
   }
 }

@@ -22,10 +22,13 @@ nav {
     padding: 0.25em 0;
     border-bottom: 2px solid transparent;
     text-decoration: none;
+    // text-decoration-style: dotted;
+    text-decoration-style: wavy;
+    text-decoration-color: $primary;
     &:hover, &[aria-current="page"] {
       // border-bottom: 2px dotted $primary;
-      text-decoration: underline;
-      text-underline-offset: 0.125em;
+      text-decoration-line: underline;
+      // text-decoration: underline;
     }
     // &:visited {
     //   color: desaturate($secondary, 40%);
