@@ -74,6 +74,8 @@ query sanityPost($slug: String!) {
     edges {
       node {
         title
+        id
+        order
         slug {
           current
         }
@@ -107,6 +109,7 @@ const ProjectPage = (data) => {
 	let categories = data.data.allSanityCategory.edges;
   categories.sort((a, b) => a.node.order - b.node.order);
 	const posts = data.data.allSanityPost.edges;
+  posts.sort((a, b) => a.node.order - b.node.order);
 	return (
 		<Layout>
       <Helmet>
