@@ -4,7 +4,7 @@ import '../sass/index.scss';
 import Layout from "../templates/main";
 import CategoryListing from "../components/CategoryListing";
 import Shape from "../components/Shape";
-// import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet";
 import NetworkIcons from "../components/NetworkIcons.js";
 
 // data
@@ -65,6 +65,10 @@ const IndexPage = ({ data }) => {
 	]
 	return (
 		<Layout>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Brian Norris | Web Developer</title>
+			</Helmet>
 			<div className="main-wrapper main-wrapper--full">
 				<div>
 				<h1 style={{ margin: '1em 0 0 0' }}>

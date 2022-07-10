@@ -5,6 +5,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import CategoryListing from "../components/CategoryListing.js";
 import Shape from "../components/Shape";
+import { Helmet } from "react-helmet";
 
 const BlockRenderer = (props) => {
 	const { style = 'normal' } = props.node
@@ -108,6 +109,10 @@ const ProjectPage = (data) => {
 	const posts = data.data.allSanityPost.edges;
 	return (
 		<Layout>
+      <Helmet>
+				<meta charSet="utf-8" />
+				<title>{data.data.sanityPost.title} | Brian Norris | Web Developer</title>
+			</Helmet>
 			<div className="main-wrapper">
 				<nav>
         <a href="/" style={{ margin: '0.5em 0 0 0' }}>
