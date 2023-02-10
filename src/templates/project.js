@@ -151,7 +151,7 @@ const ProjectPage = (data) => {
 							<ul className="post__image-gallery">
 								{galleryImages.map(image => 
 									<li key={image.asset._id}>
-										<GatsbyImage image={getImage(image.asset)} alt="TODO" />
+										<GatsbyImage image={getImage(image.asset)} alt="" />
 									</li>
 								)}
 							</ul>)
@@ -160,14 +160,14 @@ const ProjectPage = (data) => {
 					{
 						(data.data.sanityPost.github) ?
 							<p>
-								<a href={data.data.sanityPost.github}>GitHub</a>
+								<a href={data.data.sanityPost.github} target="_blank" rel="noreferrer">GitHub</a>
 							</p>
 							: null
 					}
 					{
 						(data.data.sanityPost.website) ?
 							<p>
-								<a href={data.data.sanityPost.website}>Website</a>
+								<a href={data.data.sanityPost.website} target="_blank" rel="noreferrer">Website</a>
 							</p>
 							: null
 					}

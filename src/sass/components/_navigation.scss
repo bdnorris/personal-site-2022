@@ -25,6 +25,7 @@ nav {
     // text-decoration-style: dotted;
     text-decoration-style: wavy;
     text-decoration-color: $primary;
+    font-weight: 600;
     &:hover, &[aria-current="page"] {
       // border-bottom: 2px dotted $primary;
       text-decoration-line: underline;
