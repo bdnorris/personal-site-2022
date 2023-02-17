@@ -1,7 +1,7 @@
 ---
 slug: "resume"
 date: "2023-02-17"
-title: "Brian's Résumé"
+title: "Brian’s Résumé"
 ---
 
 [← Home](/)
