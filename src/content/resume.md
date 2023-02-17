@@ -6,6 +6,8 @@ title: "Brian’s Résumé"
 
 [← Home](/)
 
+[PDF](/norris-resume.pdf)
+
 ## Education
 
 ### Missouri State University
