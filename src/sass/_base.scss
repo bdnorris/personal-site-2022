@@ -11,7 +11,7 @@ body {
   font-family: $font-stack;
   font-size: $browser-context * 1px; // ! the multiplication enforces pixels, even if you don't specify
   background-color: $cream;
-  color: $primary;
+  color: $text;
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
