@@ -6,7 +6,7 @@ import CategoryListing from "../components/CategoryListing";
 import Shape from "../components/Shape";
 import { Helmet } from "react-helmet";
 import NetworkIcons from "../components/NetworkIcons.js";
-import { Link } from "gatsby"
+import ResumeLink from "../components/ResumeLink";
 
 // data
 export const query = graphql`
@@ -86,14 +86,7 @@ const IndexPage = ({ data }) => {
 								<CategoryListing category={node.id} posts={posts} />
 							</li>
 						))}
-						<li>
-							<h3>Meta</h3>
-							<ul>
-								<li>
-									<Link to="/resume">Résumé</Link>
-								</li>
-							</ul>
-						</li>
+						<ResumeLink />
 					</ul>
 				</nav>
 				<div className="social-links">

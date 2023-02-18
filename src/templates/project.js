@@ -6,6 +6,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import CategoryListing from "../components/CategoryListing.js";
 import Shape from "../components/Shape";
 import { Helmet } from "react-helmet";
+import ResumeLink from "../components/ResumeLink";
 
 const BlockRenderer = (props) => {
 	const { style = 'normal' } = props.node
@@ -128,6 +129,7 @@ const ProjectPage = (data) => {
 								<CategoryListing category={node.id} posts={posts} />
 							</li>
 						))}
+            <ResumeLink />
 					</ul>
 				</nav>
 				<article>
