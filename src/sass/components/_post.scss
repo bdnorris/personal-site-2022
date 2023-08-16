@@ -1,5 +1,10 @@
 .post__main-image {
 	margin-bottom: 2em;
+	.portrait {
+		img {
+			width: 66.66%;
+		}
+	}
 }
 
 ul.post__image-gallery {
@@ -12,7 +17,7 @@ ul.post__image-gallery {
 	@include breakpoint(large) {
 		display: grid;
 		gap: 1em;
-		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 		li {
 			margin-bottom: 0;
 		}

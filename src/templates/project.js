@@ -144,7 +144,7 @@ const ProjectPage = (data) => {
 					{
 						(image) ?
               <div className="post__main-image">
-                <GatsbyImage image={image} alt={imageAlt} />
+                <GatsbyImage image={image} alt={imageAlt} className={(image.width > image.height ? 'landscape' : 'portrait')} />
               </div>
 							: null
 					}
