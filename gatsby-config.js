@@ -39,7 +39,6 @@ module.exports = {
       options: {
         defaults: {
           quality: 80,
-          cropFocus: "NORTH"
         }
       }
     },
